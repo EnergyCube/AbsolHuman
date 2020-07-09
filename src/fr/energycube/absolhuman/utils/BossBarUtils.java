@@ -11,6 +11,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import java.util.List;
 import java.util.Random;
 
+@Deprecated
 public class BossBarUtils {
 
     private JavaPlugin javaPlugin;

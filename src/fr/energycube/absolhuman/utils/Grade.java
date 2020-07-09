@@ -31,6 +31,12 @@ public enum Grade {
         return uuid;
     }
 
+    public boolean isMod(){
+        if(this == Admin || this == Moderateur){
+            return true;
+        }
+        return false;
+    }
 
     public static Grade getGradeByUUID(String uuid){
         for(Grade grades : values()){

@@ -81,13 +81,33 @@ public class AbsolPlayer {
         return xp;
     }
 
+    public void setXP() {
+        this.xp =  xp;
+        confXPSave();
+    }
+
+    public void addXP(int xp){
+        this.xp += xp;
+        confXPSave();
+    }
+
+    public void remXP(int xp){
+        this.xp -= xp;
+        confXPSave();
+    }
+
     private void confMoneySave(){
         config.set("player." + p.getName() + ".money", money);
         AbsolHuman.getInstance().saveConfig();
     }
 
     private void confGradeSave(){
-        config.set("player." + p.getName() + ".grade", this.grade.getUUID());
+        config.set("player." + p.getName() + ".grade", grade.getUUID());
+        AbsolHuman.getInstance().saveConfig();
+    }
+
+    private void confXPSave(){
+        config.set("player." + p.getName() + ".xp", xp);
         AbsolHuman.getInstance().saveConfig();
     }
 
@@ -113,7 +133,6 @@ public class AbsolPlayer {
     // Peut être call pour mettre à jour les infos
     // La fonction prend en charge la création des données du joueurs si elles sont ne pas existantes
     public void reload(){
-        AbsolHuman.getInstance().reloadConfig();
 
         /* Grade */
         String grade_uuid;
@@ -143,7 +162,7 @@ public class AbsolPlayer {
         if(xp_read_string == null) {
             // Set default money
             config.set("player." + p.getName() + ".xp", 0);
-            xp_read = 1;
+            xp_read = 0;
         }else{
             xp_read = Integer.parseInt(xp_read_string);
         }

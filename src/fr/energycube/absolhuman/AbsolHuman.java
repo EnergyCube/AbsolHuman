@@ -1,10 +1,9 @@
 package fr.energycube.absolhuman;
 
-import fr.energycube.absolhuman.commands.Money;
-import fr.energycube.absolhuman.events.Chat;
-import fr.energycube.absolhuman.events.Join;
-import fr.energycube.absolhuman.events.Quit;
-import fr.energycube.absolhuman.events.Weather;
+import fr.energycube.absolhuman.commands.GradeCommand;
+import fr.energycube.absolhuman.commands.LvlCommand;
+import fr.energycube.absolhuman.commands.MoneyCommand;
+import fr.energycube.absolhuman.events.*;
 import fr.energycube.absolhuman.runnables.MessagesRunnable;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -25,18 +24,19 @@ public class AbsolHuman extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new Chat(), this);
         getServer().getPluginManager().registerEvents(new Quit(), this);
         getServer().getPluginManager().registerEvents(new Weather(), this);
+        getServer().getPluginManager().registerEvents(new RewardXP(), this);
 
-        getCommand("money").setExecutor(new Money());
+        getCommand("money").setExecutor(new MoneyCommand());
+        getCommand("grade").setExecutor(new GradeCommand());
+        getCommand("lvl").setExecutor(new LvlCommand());
 
-        new MessagesRunnable().runTaskTimerAsynchronously(this, 6000, 6000); // S * 20 (20 = 1s)
+        new MessagesRunnable().runTaskTimerAsynchronously(this, 24000, 24000); // S * 20 (20 = 1s)
 
         initSpawn();
-
     }
 
     @Override
     public void onDisable() {
-        reloadConfig();
         saveConfig();
     }
 
@@ -52,6 +52,7 @@ public class AbsolHuman extends JavaPlugin {
         }else{
             getConfig().set("spawn", new Location(getServer().getWorld("world"), 0, 0, 0, 0, 0));
             getServer().getConsoleSender().sendMessage(ChatColor.RED + "!! Merci de configurer le spawn dans le fichier de config !!");
+            saveConfig();
         }
     }
 

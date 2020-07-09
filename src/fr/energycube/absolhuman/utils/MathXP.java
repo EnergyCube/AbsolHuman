@@ -5,7 +5,7 @@ public class MathXP {
     /* Attention les yeux, c'est des maths */
 
     public static int getLVLfromXP(int xp){
-        return Math.round(xp / 1000);
+        return xp / 1000;
     }
 
     public static int getNextXPNeededFromLVL(int lvl){
