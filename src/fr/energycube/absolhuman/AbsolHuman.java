@@ -1,8 +1,6 @@
 package fr.energycube.absolhuman;
 
-import fr.energycube.absolhuman.commands.GradeCommand;
-import fr.energycube.absolhuman.commands.LvlCommand;
-import fr.energycube.absolhuman.commands.MoneyCommand;
+import fr.energycube.absolhuman.commands.*;
 import fr.energycube.absolhuman.events.*;
 import fr.energycube.absolhuman.runnables.MessagesRunnable;
 import org.bukkit.ChatColor;
@@ -26,9 +24,18 @@ public class AbsolHuman extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new Weather(), this);
         getServer().getPluginManager().registerEvents(new RewardXP(), this);
 
+
+        getServer().getPluginManager().registerEvents(new PreCommand(), this);
+        getServer().getPluginManager().registerEvents(new WaitLogin(), this);
+
         getCommand("money").setExecutor(new MoneyCommand());
         getCommand("grade").setExecutor(new GradeCommand());
         getCommand("lvl").setExecutor(new LvlCommand());
+
+        /* AUTH */
+        getCommand("login").setExecutor(new LoginCommand());
+        getCommand("register").setExecutor(new RegisterCommand());
+        getCommand("changepass").setExecutor(new ChangePassCommand());
 
         new MessagesRunnable().runTaskTimerAsynchronously(this, 24000, 24000); // S * 20 (20 = 1s)
 
@@ -37,7 +44,7 @@ public class AbsolHuman extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        saveConfig();
+        // saveConfig(); Détruit les modifications manuels
     }
 
     private void initSpawn(){

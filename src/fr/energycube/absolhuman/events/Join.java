@@ -23,8 +23,6 @@ public class Join implements Listener {
             e.setJoinMessage(ChatColor.AQUA + "L'" + grade.getChatColor() + ap.getGrade().getChatName().replace("[", "").replace("]", "") + " " + ap.getPlayer().getName() + ChatColor.AQUA + " a rejoint le serveur !");
         }
 
-        ap.getPlayer().setDisplayName(grade.getChatColor() + ap.getGrade().getChatName() + " " + ap.getPlayer().getName());
-
         p.sendMessage(ChatColor.GREEN + "Vous avez " + ap.getXP() + " XP (LVL " + MathXP.getLVLfromXP(ap.getXP()) + ") !");
         p.sendMessage(ChatColor.GREEN + "Il vous faut " + MathXP.getNextXPNeeded(ap.getXP()) + " XP pour atteindre le prochain niveau ! ");
 

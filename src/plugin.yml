@@ -9,3 +9,6 @@ commands:
   money:
   grade:
   lvl:
+  login:
+  register:
+  changepass:

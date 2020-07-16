@@ -1,6 +1,7 @@
 package fr.energycube.absolhuman;
 
 import fr.energycube.absolhuman.utils.Grade;
+import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
@@ -11,6 +12,8 @@ public class AbsolPlayer {
 
     private static HashMap<Player, AbsolPlayer> regListHM = new HashMap<>();
     FileConfiguration config = AbsolHuman.getInstance().getConfig();
+
+    private boolean logged;
 
     private Player p;
     private Grade grade;
@@ -56,6 +59,7 @@ public class AbsolPlayer {
     public void setGrade(Grade grade) {
         this.grade = grade;
         confGradeSave();
+        p.setDisplayName(grade.getChatColor() + getGrade().getChatName() + " " + getPlayer().getName());
     }
 
     public int getMoney() {
@@ -109,6 +113,24 @@ public class AbsolPlayer {
     private void confXPSave(){
         config.set("player." + p.getName() + ".xp", xp);
         AbsolHuman.getInstance().saveConfig();
+    }
+
+    public boolean isLogged() {
+        return logged;
+    }
+
+    public void setLogged(boolean logged) {
+        this.logged = logged;
+    }
+
+    public void sendAuthMessage(){
+        if(AbsolHuman.getInstance().getConfig().get("player." + p.getName() + ".password") == null){
+            p.sendMessage(ChatColor.RED + "MERCI DE VOUS ENREGISTRER !");
+            p.sendMessage(ChatColor.YELLOW + "Merci de vous enregistrer avec /register UnMotDePasse");
+        }else{
+            p.sendMessage(ChatColor.RED + "MERCI DE VOUS IDENTIFIER !");
+            p.sendMessage(ChatColor.YELLOW + "Merci de vous enregistrer avec /login VotreMotDePasse");
+        }
     }
 
     /*
@@ -184,6 +206,8 @@ public class AbsolPlayer {
         */
 
 
+        p.setDisplayName(grade.getChatColor() + getGrade().getChatName() + " " + getPlayer().getName());
+        logged = false;
         AbsolHuman.getInstance().saveConfig();
     }
 

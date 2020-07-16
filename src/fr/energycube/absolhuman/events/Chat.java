@@ -14,8 +14,8 @@ public class Chat implements Listener {
     private void onSpeak(AsyncPlayerChatEvent e){
         AbsolPlayer ap = AbsolPlayer.getAPlayer(e.getPlayer());
         Grade grade = ap.getGrade();
-        int lvl = MathXP.getLVLfromXP(ap.getXP());
-        e.setFormat(ap.getPlayer().getDisplayName() + " " + getColorFromLVL(lvl) + "{" + lvl + "}" + ChatColor.RESET + " : " + grade.getChatColor() + e.getMessage());
+        //int lvl = MathXP.getLVLfromXP(ap.getXP());
+        e.setFormat(ap.getPlayer().getDisplayName() + /*" " + getColorFromLVL(lvl) + "{" + lvl + "}" +*/ ChatColor.RESET + " : " + grade.getChatColor() + e.getMessage());
     }
 
 

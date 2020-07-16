@@ -15,9 +15,9 @@ public class Quit implements Listener {
         Grade grade = ap.getGrade();
 
         if(ap.getGrade() != Grade.Admin) {
-            e.setQuitMessage(ChatColor.GRAY + "Le " + grade.getChatColor() + ap.getGrade().getChatName().replace("[", "").replace("]", "") + " " + ap.getPlayer().getName() + ChatColor.AQUA + " vient de se déconnecter du serveur !");
+            e.setQuitMessage(ChatColor.AQUA + "Le " + ap.getGrade().getChatName().replace("[", "").replace("]", "") + " " + ap.getPlayer().getName() + ChatColor.AQUA + " vient de se déconnecter du serveur !");
         }else{
-            e.setQuitMessage(ChatColor.GRAY + "L'" + grade.getChatColor() + ap.getGrade().getChatName().replace("[", "").replace("]", "") + " " + ap.getPlayer().getName() + ChatColor.AQUA + " vient de se déconnecter du serveur !");
+            e.setQuitMessage(ChatColor.AQUA + "L'" + grade.getChatColor() + ap.getGrade().getChatName().replace("[", "").replace("]", "") + " " + ap.getPlayer().getName() + ChatColor.AQUA + " vient de se déconnecter du serveur !");
         }
 
         ap.unload();

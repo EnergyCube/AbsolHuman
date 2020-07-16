@@ -1,7 +1,5 @@
 package fr.energycube.absolhuman.events;
 
-import fr.energycube.absolhuman.AbsolPlayer;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
@@ -12,7 +10,7 @@ public class RewardXP implements Listener {
 
     @EventHandler
     public void onKill(EntityDeathEvent e) {
-        Random random = new Random();
+       /* Random random = new Random();
         if (e.getEntity().getKiller() instanceof Player) {
             Player p = (Player) e.getEntity().getKiller();
             AbsolPlayer ap = AbsolPlayer.getAPlayer(p);
@@ -55,7 +53,7 @@ public class RewardXP implements Listener {
                     ap.addXP(random(8000, 6000));
                     break;
             }
-        }
+        }*/
     }
 
     public static int random(int max, int min) {
