@@ -1,9 +1,9 @@
 package fr.energycube.absolhuman.commands;
 
 import fr.energycube.absolhuman.AbsolHuman;
-import fr.energycube.absolhuman.AbsolPlayer;
 import fr.energycube.absolhuman.utils.Security;
 import org.bukkit.ChatColor;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -26,10 +26,19 @@ public class RegisterCommand implements CommandExecutor {
                     if (!blacklist.contains(wantedpass)) {
                         if(wantedpass.length() >= 3) {
                             if (!wantedpass.contains(sender.getName())) {
-                                sender.sendMessage(ChatColor.YELLOW + "Enregistrement de votre Mot de Passe...");
-                                AbsolHuman.getInstance().getConfig().set("player." + sender.getName() + ".password", Security.getSHA512SecurePassword(wantedpass));
-                                AbsolPlayer.getAPlayer((Player) sender).setLogged(true);
-                                sender.sendMessage(ChatColor.GREEN + "Enregistrement réussi !");
+                                boolean finalcheck = true;
+                                for(OfflinePlayer offp : AbsolHuman.getInstance().getServer().getOfflinePlayers()){
+                                    if(wantedpass.equals(offp.getName())){
+                                        finalcheck = false;
+                                    }
+                                }
+                                if(finalcheck) {
+                                    sender.sendMessage(ChatColor.YELLOW + "Enregistrement du nouveau Mot de Passe...");
+                                    AbsolHuman.getInstance().getConfig().set("player." + sender.getName() + ".password", Security.getSHA512SecurePassword(wantedpass));
+                                    sender.sendMessage(ChatColor.GREEN + "Enregistrement réussi ! Votre Mot de Passe a changé !");
+                                }else {
+                                    sender.sendMessage(ChatColor.DARK_RED + "!! Mot de passe non autorisé !!");
+                                }
                             } else {
                                 sender.sendMessage(ChatColor.DARK_RED + "!!?? Votre Pseudo !!?? Mot de passe non autorisé !!");
                             }

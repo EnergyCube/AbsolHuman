@@ -25,13 +25,15 @@ public class MessagesRunnable extends BukkitRunnable {
             bot_prefix + ChatColor.GREEN + " Vous avez un bon PC et vous voulez rendre votre jeu graphiquement plus joli ? Utilisez donc Optifine avec des shaders !",
             bot_prefix + ChatColor.GREEN + " Je vous ai déjà parlé de Red Shadow Legend ?",
             bot_prefix + ChatColor.GREEN + " Je vous ai déjà parlé de NordVPN ?",
+            bot_prefix + ChatColor.GREEN + " Votre terrain est exposé à des risques, tel que les explosions de creeper/tnt, les trolls, etc... Pas de paniques, vous pouvez protéger votre terrain et en obtenir l'exclusivité avec la commande de revendication de terrain, pour plus d'infos : /chunk help",
 
             // Section catacombes de l'humour
-
+            /*
             bot_prefix + ChatColor.GREEN + " Une maman Kangourou demande à son fils : Comment s’est passé ton examen ? – « C’est dans la poche »",
             bot_prefix + ChatColor.GREEN + " Une mouette mange un sandwich. Une autre arrive : On fait mouette-mouette ?",
             bot_prefix + ChatColor.GREEN + " Quelle est la ville la plus proche de l’eau ? Bordeaux",
             bot_prefix + ChatColor.GREEN + " C’est l’histoire d’un schtroumpf qui tombe, et qui se fait un bleu..."
+             */
 
     });
 
