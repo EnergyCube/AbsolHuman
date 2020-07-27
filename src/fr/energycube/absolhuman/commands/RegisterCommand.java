@@ -1,6 +1,7 @@
 package fr.energycube.absolhuman.commands;
 
 import fr.energycube.absolhuman.AbsolHuman;
+import fr.energycube.absolhuman.AbsolPlayer;
 import fr.energycube.absolhuman.utils.Security;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
@@ -33,9 +34,11 @@ public class RegisterCommand implements CommandExecutor {
                                     }
                                 }
                                 if(finalcheck) {
-                                    sender.sendMessage(ChatColor.YELLOW + "Enregistrement du nouveau Mot de Passe...");
+                                    sender.sendMessage(ChatColor.YELLOW + "Enregistrement du Mot de Passe...");
                                     AbsolHuman.getInstance().getConfig().set("player." + sender.getName() + ".password", Security.getSHA512SecurePassword(wantedpass));
-                                    sender.sendMessage(ChatColor.GREEN + "Enregistrement réussi ! Votre Mot de Passe a changé !");
+                                    AbsolHuman.getInstance().saveConfig();
+                                    sender.sendMessage(ChatColor.GREEN + "Enregistrement réussi ! Votre Mot de Passe a été défini !");
+                                    AbsolPlayer.getAPlayer((Player)sender).setLogged(true);
                                 }else {
                                     sender.sendMessage(ChatColor.DARK_RED + "!! Mot de passe non autorisé !!");
                                 }

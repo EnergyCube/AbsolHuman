@@ -22,15 +22,21 @@ public class AbsolHuman extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new Chat(), this);
         getServer().getPluginManager().registerEvents(new Quit(), this);
         getServer().getPluginManager().registerEvents(new Weather(), this);
-        getServer().getPluginManager().registerEvents(new RewardXP(), this);
+        //getServer().getPluginManager().registerEvents(new RewardXP(), this);
 
 
-        getServer().getPluginManager().registerEvents(new PreCommand(), this);
+        getServer().getPluginManager().registerEvents(new ClaimInteract(), this);
+        getServer().getPluginManager().registerEvents(new ClaimInv(), this);
+
+        getServer().getPluginManager().registerEvents(new Move(), this);
+
         getServer().getPluginManager().registerEvents(new WaitLogin(), this);
 
         getCommand("money").setExecutor(new MoneyCommand());
         getCommand("grade").setExecutor(new GradeCommand());
         getCommand("lvl").setExecutor(new LvlCommand());
+
+        getCommand("chunk").setExecutor(new ChunkCommand());
 
         /* AUTH */
         getCommand("login").setExecutor(new LoginCommand());
@@ -39,11 +45,16 @@ public class AbsolHuman extends JavaPlugin {
 
         new MessagesRunnable().runTaskTimerAsynchronously(this, 24000, 24000); // S * 20 (20 = 1s)
 
+        System.out.println("[AbsolHuman] " + getConfig().getStringList("claimindex").size() + " claim detected !");
+        AbsolChunk.loadAll();
+        System.out.println("[AbsolHuman] " + AbsolChunk.getAbsolChunks().size() + " claim loaded !");
+
         initSpawn();
     }
 
     @Override
     public void onDisable() {
+
         // saveConfig(); Détruit les modifications manuels
     }
 

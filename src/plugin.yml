@@ -1,6 +1,6 @@
 name: AbsolHuman
 main: fr.energycube.absolhuman.AbsolHuman
-version: 0.1
+version: 0.2
 description: Permet de gérer le serveur et d'ajouter des fonctionnalités
 api-version: 1.16
 author: EnergyCube
@@ -12,3 +12,4 @@ commands:
   login:
   register:
   changepass:
+  chunk:

@@ -29,7 +29,7 @@ public class GradeCommand implements CommandExecutor {
                             wanted_grade = Grade.valueOf(grade_name);
                             if(wanted_grade != Grade.Admin) {
                                 wanted_ah.setGrade(wanted_grade);
-                                sender.sendMessage(ChatColor.GREEN + "Le joueur " + sender.getName() + " est désormais " + wanted_grade.getChatColor() + wanted_grade.getChatName() + ChatColor.GREEN + " !");
+                                sender.sendMessage(ChatColor.GREEN + "Le joueur " + AbsolHuman.getInstance().getServer().getPlayer(name).getName() + " est désormais " + wanted_grade.getChatColor() + wanted_grade.getChatName() + ChatColor.GREEN + " !");
                                 return false;
                             }else{
                                 sender.sendMessage(ChatColor.DARK_RED + "nop");

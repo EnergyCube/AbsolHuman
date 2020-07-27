@@ -1,5 +1,6 @@
 package fr.energycube.absolhuman.events;
 
+import fr.energycube.absolhuman.AbsolOfflinePlayer;
 import fr.energycube.absolhuman.AbsolPlayer;
 import fr.energycube.absolhuman.utils.Grade;
 import fr.energycube.absolhuman.utils.MathXP;
@@ -14,13 +15,14 @@ public class Join implements Listener {
     @EventHandler
     private void onJoin(PlayerJoinEvent e){
         Player p = e.getPlayer();
+        AbsolOfflinePlayer.tryUnload(e.getPlayer().getName());
         AbsolPlayer ap = AbsolPlayer.getAPlayer(p);
         Grade grade = ap.getGrade();
 
         if(ap.getGrade() != Grade.Admin) {
-            e.setJoinMessage(ChatColor.AQUA + "Le " + grade.getChatColor() + ap.getGrade().getChatName().replace("[", "").replace("]", "") + " " + ap.getPlayer().getName() + ChatColor.AQUA + " a rejoint le serveur !");
+            e.setJoinMessage(ChatColor.AQUA + grade.getChatColor() + ap.getGrade().getChatName().replace("[", "").replace("]", "") + " " + ap.getPlayer().getName() + ChatColor.AQUA + " a rejoint le serveur !");
         }else{
-            e.setJoinMessage(ChatColor.AQUA + "L'" + grade.getChatColor() + ap.getGrade().getChatName().replace("[", "").replace("]", "") + " " + ap.getPlayer().getName() + ChatColor.AQUA + " a rejoint le serveur !");
+            e.setJoinMessage(ChatColor.AQUA + grade.getChatColor() + ap.getGrade().getChatName().replace("[", "").replace("]", "") + " " + ap.getPlayer().getName() + ChatColor.AQUA + " a rejoint le serveur !");
         }
 
         p.sendMessage(ChatColor.GREEN + "Vous avez " + ap.getXP() + " XP (LVL " + MathXP.getLVLfromXP(ap.getXP()) + ") !");

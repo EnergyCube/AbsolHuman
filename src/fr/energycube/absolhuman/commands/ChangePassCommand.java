@@ -37,6 +37,7 @@ public class ChangePassCommand implements CommandExecutor {
                                     if(finalcheck) {
                                         sender.sendMessage(ChatColor.YELLOW + "Enregistrement du nouveau Mot de Passe...");
                                         AbsolHuman.getInstance().getConfig().set("player." + sender.getName() + ".password", Security.getSHA512SecurePassword(newpass));
+                                        AbsolHuman.getInstance().saveConfig();
                                         sender.sendMessage(ChatColor.GREEN + "Enregistrement réussi ! Votre Mot de Passe a changé !");
                                     }else {
                                         sender.sendMessage(ChatColor.DARK_RED + "!! Mot de passe non autorisé !!");

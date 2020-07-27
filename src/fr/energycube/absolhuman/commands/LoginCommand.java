@@ -19,7 +19,10 @@ public class LoginCommand implements CommandExecutor {
                 String supposedpass = args[0];
                 AbsolPlayer ap = AbsolPlayer.getAPlayer((Player)sender);
                 if(!ap.isLogged()) {
-                    if (Security.getSHA512SecurePassword(supposedpass).equals(AbsolHuman.getInstance().getConfig().get("player." + sender.getName() + ".password"))) {
+                    String pass = AbsolHuman.getInstance().getConfig().getString("player." + sender.getName() + ".password");
+                    if(pass == null){
+                        sender.sendMessage(ChatColor.RED + "Vous devez vous créer un compte avant de pouvoir vous connecter !");
+                    }else if (Security.getSHA512SecurePassword(supposedpass).equals(pass)) {
                         ap.setLogged(true);
                         sender.sendMessage(ChatColor.GREEN + "Identification réussite !");
                     } else {

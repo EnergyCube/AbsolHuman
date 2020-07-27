@@ -20,7 +20,7 @@ public class Weather implements Listener {
                 e.getWorld().setWeatherDuration(0);
                 e.getWorld().setThundering(false);
             }else{
-                e.getWorld().getPlayers().forEach(player -> player.sendMessage(ChatColor.GOLD + "Pluie non annulée !"));
+                e.getWorld().getPlayers().forEach(player -> player.sendMessage(ChatColor.UNDERLINE +""+ ChatColor.YELLOW + "Pluie non annulée !"));
             }
         }
 

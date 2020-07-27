@@ -19,7 +19,6 @@ public class AbsolPlayer {
     private Grade grade;
     private int money;
     private int xp;
-    //private List<Quest> questList;
 
     /* Static Access */
     public static AbsolPlayer getAPlayer(Player p){
@@ -133,25 +132,6 @@ public class AbsolPlayer {
         }
     }
 
-    /*
-    public List<Quest> getQuestList() {
-        return questList;
-    }
-
-    public List<Quest> getActiveQuestList() {
-        List<Quest> active_quest = new ArrayList<>();
-        questList.forEach(quest -> {
-            if(!quest.isComplete()){
-                active_quest.add(quest);
-            };
-        });
-        return active_quest;
-    }
-
-    public int getMoney() {
-        return money;
-    }*/
-
     // Peut être call pour mettre à jour les infos
     // La fonction prend en charge la création des données du joueurs si elles sont ne pas existantes
     public void reload(){
@@ -189,22 +169,6 @@ public class AbsolPlayer {
             xp_read = Integer.parseInt(xp_read_string);
         }
         xp = xp_read;
-
-        /* Quest */
-        /*
-        List<String> questList_read;
-        questList_read = AbsolHuman.getInstance().getConfig().getStringList("player." + p.getName() + ".quests");
-        if(questList_read.size() == 0){
-            // Set default quests
-            Quest.getDefaultQuests().forEach(quest -> AbsolHuman.getInstance().getConfig().set("player." + p.getName() + ".quests." + quest.getUUID(), false));
-        }else{
-            for (String quest_uuid : questList_read){
-                questList.add(Quest.getQuestFromUUID(quest_uuid));
-                System.out.println(quest_uuid);
-            }
-        }
-        */
-
 
         p.setDisplayName(grade.getChatColor() + getGrade().getChatName() + " " + getPlayer().getName());
         logged = false;

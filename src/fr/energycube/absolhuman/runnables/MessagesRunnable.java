@@ -19,7 +19,6 @@ public class MessagesRunnable extends BukkitRunnable {
     List<String> msg = Arrays.asList(new String[]{
             bot_prefix + ChatColor.GREEN + " Vous jouez sur le serveur de la communauté d'Absol Human !",
             bot_prefix + ChatColor.GREEN + " Si vous jouez, n'hésitez pas à venir sur Discord !",
-            bot_prefix + ChatColor.GREEN + " Envie d'un #⛏-minecraft ? Moi aussi...",
             bot_prefix + ChatColor.GREEN + " N'hésitez pas à ramener des joueurs de la communauté sur le serveur :)",
             bot_prefix + ChatColor.GREEN + " Votre PC est lent ? Minecraft utilise trop de ram ? Vous avez des chutes de FPS ? Utilisez donc Optifine !",
             bot_prefix + ChatColor.GREEN + " Vous avez un bon PC et vous voulez rendre votre jeu graphiquement plus joli ? Utilisez donc Optifine avec des shaders !",
